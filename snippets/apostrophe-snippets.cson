@@ -1,0 +1,6 @@
+'.source.nunjucks, .text.html.nunjucks':
+  'Log':
+    'prefix': 'log'
+    'body': '{{ apos.log(${1:expression}) }}'
+    'description': 'Passes expression to console.log. Very useful for debugging.'
+    'descriptionMoreURL': 'http://apostrophenow.org/api-reference/nunjucks-helpers.html#code-apos-log'
