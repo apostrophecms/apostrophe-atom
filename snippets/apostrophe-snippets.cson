@@ -1,6 +1,16 @@
 '.source.nunjucks, .text.html.nunjucks':
+  'Data':
+    'prefix': 'data'
+    'body': '{{ data.${1:object} }}'
+    'description': 'Render some data passed to the template.'
+    'descriptionMoreURL': ''
   'Log':
     'prefix': 'log'
     'body': '{{ apos.log(${1:expression}) }}'
     'description': 'Passes expression to console.log. Very useful for debugging.'
     'descriptionMoreURL': 'http://apostrophenow.org/api-reference/nunjucks-helpers.html#code-apos-log'
+  'Singleton':
+    'prefix': 'singleton'
+    'body': '{{ apos.singleton(${1:page}, \'${2:name}\', \'${3:type}\'${4:, { ${5:options} \\}}) }}'
+    'description': 'Renders a single widget in your template'
+    'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
