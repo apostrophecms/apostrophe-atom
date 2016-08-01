@@ -1,4 +1,9 @@
 '.source.nunjucks, .text.html.nunjucks':
+  'Area':
+    'prefix': 'area'
+    'body': '{{ apos.area(${1:page}, \'${2:name}\'${3:, { ${4:options} \\}}) }}'
+    'description': 'Renders a single widget in your template'
+    'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
   'Data':
     'prefix': 'data'
     'body': '{{ data.${1:object} }}'
