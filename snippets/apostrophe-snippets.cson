@@ -19,3 +19,92 @@
     'body': '{{ apos.singleton(${1:page}, \'${2:name}\', \'${3:type}\'${4:, { ${5:options} \\}}) }}'
     'description': 'Renders a single widget in your template'
     'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
+'.source.js':
+  'Piece Definition':
+    'prefix': 'piece',
+    'body': """
+      module.exports = {
+        extend: 'apostrophe-pieces',
+        name: '${1:name}',
+        ${2:alias: '${3:alias}',
+        }label: '${4:Label}',
+        pluralLabel: '${5:Labels}',
+        addFields: [
+          ${6}
+        ]
+      }
+    """
+    'description': 'A piece defition'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/reusable-content-with-pieces.html'
+  'Schema Field: generic':
+    'prefix': 'schema.field'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: '${3:type}'
+      }${4}
+    """
+    'description': 'A generic schema field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: string':
+    'prefix': 'schema.string'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'string'
+      }${4}
+    """
+    'description': 'A string field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: select':
+    'prefix': 'schema.select'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'select',
+        choices: [
+          { label: '${3:Label}', value: '${4:value}' }
+        ]
+      }${5}
+    """
+    'description': 'A select field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: joinByOne':
+    'prefix': 'schema.joinByOne'
+    'body': """
+      {
+        name: '${1:_page}',
+        label: '${2:Page to Link}',
+        type: 'joinByOne',
+        withType: '${3:apostrophe-page}',
+        idField: '${4:pageId}',
+        filters: {
+          projection: {
+            ${5:_url: 1,}
+            ${6:slug: 1,}
+            ${7:title: 1,}
+          }
+        }
+      }${8}
+    """
+    'description': 'A joinByOne field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: singleton':
+    'prefix': 'schema.singleton'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'singleton',
+        widgetType: '${3:apostrophe-images}',
+        options: {
+          ${4:limit: 1,}
+          ${5:aspectRatio: [3, 2],}
+        }
+      }${6}
+    """
+    'description': 'A singleton field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
