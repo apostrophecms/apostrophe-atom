@@ -28,9 +28,9 @@
         name: '${1:name}',
         ${2:alias: '${3:alias}',
         }label: '${4:Label}',
-        pluralLabel: '${5:Labels}',
+        pluralLabel: '${5:${4:Label}s}',
         addFields: [
-          ${6}
+          $6
         ]
       }
     """
@@ -43,7 +43,7 @@
         name: '${1:name}',
         label: '${2:Label}',
         type: '${3:type}'
-      }${4}
+      }$4
     """
     'description': 'A generic schema field'
     'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
@@ -54,7 +54,7 @@
         name: '${1:name}',
         label: '${2:Label}',
         type: 'string'
-      }${4}
+      }$4
     """
     'description': 'A string field'
     'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
@@ -66,29 +66,34 @@
         label: '${2:Label}',
         type: 'select',
         choices: [
-          { label: '${3:Label}', value: '${4:value}' }
+          { label: '${3:Label}', value: '${4:${3:value}}' }$5
         ]
-      }${5}
+      }$6
     """
     'description': 'A select field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: select choice':
+    'prefix': 'schema.select.choice'
+    'body': '{ label: \'${1:Label}\', value: \'${2:${1:value}}\' }$3'
+    'description': 'A select field choice'
     'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
   'Schema Field: joinByOne':
     'prefix': 'schema.joinByOne'
     'body': """
       {
-        name: '${1:_page}',
+        name: '_${1:page}',
         label: '${2:Page to Link}',
         type: 'joinByOne',
         withType: '${3:apostrophe-page}',
-        idField: '${4:pageId}',
+        idField: '${4:${1:page}Id}',
         filters: {
-          projection: {
-            ${5:_url: 1,}
-            ${6:slug: 1,}
-            ${7:title: 1,}
-          }
+          projection: {${5:
+            ${6:_url: 1,}
+            ${7:slug: 1,}
+            ${8:title: 1,}
+          }}
         }
-      }${8}
+      }$9
     """
     'description': 'A joinByOne field'
     'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
@@ -104,7 +109,7 @@
           ${4:limit: 1,}
           ${5:aspectRatio: [3, 2],}
         }
-      }${6}
+      }$6
     """
     'description': 'A singleton field'
     'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
