@@ -1,4 +1,5 @@
 '.source.nunjucks, .text.html.nunjucks':
+  # Templating
   'Area':
     'prefix': 'area'
     'body': '{{ apos.area(${1:page}, \'${2:name}\'${3:, { ${4:options} \\}}) }}'
@@ -20,6 +21,18 @@
     'description': 'Renders a single widget in your template'
     'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
 '.source.js':
+  # Working with pieces, docs, cursors
+  'self.find':
+    'prefix': 'self.find'
+    'body': 'return self.find(req, {$1}${2:, {\\}}).${3:toArray}(function(err, ${4:docs}) {$5});'
+    'description': 'Fetch a cursor from within a module that extends apostrophe-pieces'
+    'descriptionMoreURL':'http://apostrophecms.org/docs/tutorials/intermediate/model-layer.html#fetching-pieces-with-apostrophe'
+  'docs.find':
+    'prefix': 'docs.find'
+    'body': 'return self.apos.docs.getManager(\'$1\').find(req, {$2}${3:, {\\}}).${4:toArray}(function(err, ${5:docs}) {$6});'
+    'description': 'Fetch a cursor from within a module outside of the one you are currently in'
+    'descriptionMoreURL':'http://apostrophecms.org/docs/tutorials/intermediate/model-layer.html#fetching-pieces-from-a-different-module'
+  # Defining schemas
   'Piece Definition':
     'prefix': 'piece',
     'body': """
