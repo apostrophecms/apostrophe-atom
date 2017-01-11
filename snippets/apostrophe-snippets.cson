@@ -21,7 +21,7 @@
     'description': 'Renders a single widget in your template'
     'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
   'Client Logger':
-    'prefix': 'client-logger'
+    'prefix': 'log.client'
     'body': '<script>console.log({{ ${1:expression} | json }})</script>'
     'description': 'Pass any data like object to the browser console for debugging.'
 '.source.js':
