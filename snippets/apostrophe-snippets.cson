@@ -1,4 +1,10 @@
 '.source.nunjucks, .text.html.nunjucks':
+  # Templating
+  'Area':
+    'prefix': 'area'
+    'body': '{{ apos.area(${1:page}, \'${2:name}\'${3:, { ${4:options} \\}}) }}'
+    'description': 'Renders a single widget in your template'
+    'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
   'Data':
     'prefix': 'data'
     'body': '{{ data.${1:object} }}'
@@ -18,3 +24,109 @@
     'prefix': 'client-logger'
     'body': '<script>console.log({{ ${1:expression} | json }})</script>'
     'description': 'Pass any data like object to the browser console for debugging.'
+'.source.js':
+  # Working with pieces, docs, cursors
+  'self.find':
+    'prefix': 'self.find'
+    'body': 'return self.find(req, {$1}${2:, {\\}}).${3:toArray}(function(err, ${4:docs}) {$5});'
+    'description': 'Fetch a cursor from within a module that extends apostrophe-pieces'
+    'descriptionMoreURL':'http://apostrophecms.org/docs/tutorials/intermediate/model-layer.html#fetching-pieces-with-apostrophe'
+  'docs.find':
+    'prefix': 'docs.find'
+    'body': 'return self.apos.docs.getManager(\'$1\').find(req, {$2}${3:, {\\}}).${4:toArray}(function(err, ${5:docs}) {$6});'
+    'description': 'Fetch a cursor from within a module outside of the one you are currently in'
+    'descriptionMoreURL':'http://apostrophecms.org/docs/tutorials/intermediate/model-layer.html#fetching-pieces-from-a-different-module'
+  # Defining schemas
+  'Piece Definition':
+    'prefix': 'piece',
+    'body': """
+      module.exports = {
+        extend: 'apostrophe-pieces',
+        name: '${1:name}',
+        ${2:alias: '${3:alias}',
+        }label: '${4:Label}',
+        pluralLabel: '${5:${4:Label}s}',
+        addFields: [
+          $6
+        ]
+      }
+    """
+    'description': 'A piece defition'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/reusable-content-with-pieces.html'
+  'Schema Field: generic':
+    'prefix': 'schema.field'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: '${3:type}'
+      }$4
+    """
+    'description': 'A generic schema field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: string':
+    'prefix': 'schema.string'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'string'
+      }$4
+    """
+    'description': 'A string field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: select':
+    'prefix': 'schema.select'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'select',
+        choices: [
+          { label: '${3:Label}', value: '${4:${3:value}}' }$5
+        ]
+      }$6
+    """
+    'description': 'A select field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: select choice':
+    'prefix': 'schema.select.choice'
+    'body': '{ label: \'${1:Label}\', value: \'${2:${1:value}}\' }$3'
+    'description': 'A select field choice'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: joinByOne':
+    'prefix': 'schema.joinByOne'
+    'body': """
+      {
+        name: '_${1:page}',
+        label: '${2:Page to Link}',
+        type: 'joinByOne',
+        withType: '${3:apostrophe-page}',
+        idField: '${4:${1:page}Id}',
+        filters: {
+          projection: {${5:
+            ${6:_url: 1,}
+            ${7:slug: 1,}
+            ${8:title: 1,}
+          }}
+        }
+      }$9
+    """
+    'description': 'A joinByOne field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'
+  'Schema Field: singleton':
+    'prefix': 'schema.singleton'
+    'body': """
+      {
+        name: '${1:name}',
+        label: '${2:Label}',
+        type: 'singleton',
+        widgetType: '${3:apostrophe-images}',
+        options: {
+          ${4:limit: 1,}
+          ${5:aspectRatio: [3, 2],}
+        }
+      }$6
+    """
+    'description': 'A singleton field'
+    'descriptionMoreURL': 'http://apostrophecms.org/docs/tutorials/getting-started/schema-guide.html'

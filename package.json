@@ -1,7 +1,7 @@
 {
   "name": "apostrophe-atom",
   "main": "./lib/apostrophe-atom",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "description": "Snippets for your Apostrophe projects.",
   "keywords": [],
   "repository": "https://github.com/punkave/apostrophe-atom",
