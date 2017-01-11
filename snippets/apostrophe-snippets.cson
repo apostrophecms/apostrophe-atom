@@ -20,6 +20,10 @@
     'body': '{{ apos.singleton(${1:page}, \'${2:name}\', \'${3:type}\'${4:, { ${5:options} \\}}) }}'
     'description': 'Renders a single widget in your template'
     'descriptionMoreURL': 'http://apostrophenow.org/tutorials/getting-started/adding-editable-content-areas-to-your-page-templates.html'
+  'Client Logger':
+    'prefix': 'client-logger'
+    'body': '<script>console.log({{ ${1:expression} | json }})</script>'
+    'description': 'Pass any data like object to the browser console for debugging.'
 '.source.js':
   # Working with pieces, docs, cursors
   'self.find':
